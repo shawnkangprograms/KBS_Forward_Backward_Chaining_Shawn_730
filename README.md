@@ -1,9 +1,6 @@
 # KBS_Forward_Backward_Chaining_Njoroge_730
 
-> **Course Eligibility Expert System** — Demonstrating Forward and Backward Chaining
-> in a Rule-Based Knowledge-Based System (KBS) built entirely in Python.
-
----
+**Course Eligibility Expert System** — Demonstrating Forward and Backward Chaining in a Rule-Based Knowledge-Based System (KBS) built entirely in Python.
 
 ## Table of Contents
 
@@ -15,8 +12,6 @@
 6. [How to Run](#6-how-to-run)
 7. [Sample Outputs](#7-sample-outputs)
 8. [File Structure](#8-file-structure)
-
----
 
 ## 1. Problem Description
 
@@ -33,7 +28,6 @@ Two reasoning strategies are implemented from scratch (no external AI libraries)
 | **Forward Chaining** | Data-driven — derive all possible conclusions from known facts | Run automatically for every student |
 | **Backward Chaining** | Goal-driven — prove or disprove a specific eligibility goal | Run for specific course queries |
 
----
 
 ## 2. Facts
 
@@ -59,8 +53,6 @@ During inference, a `set` accumulates all known facts — starting from complete
 "Not eligible for advanced courses"
 ```
 
----
-
 ## 3. Rules
 
 Seven rules are defined. Each rule has:
@@ -79,8 +71,6 @@ Seven rules are defined. Each rule has:
 | 7 | Eligible for Machine Learning Basics **AND** GPA ≥ 3.0 **AND** no low-GPA flag | Eligible for Deep Learning |
 
 Rules are stored as a list of dictionaries, making the knowledge base easy to extend.
-
----
 
 ## 4. How Forward Chaining Works
 
@@ -104,8 +94,6 @@ Key properties:
 - **Monotonic** — facts are only ever added, never removed.
 - **Terminates** — stops when no new facts are derivable (fixed point).
 - Handles **chained dependencies** (e.g., Rule 2 depends on the conclusion of Rule 1).
-
----
 
 ## 5. How Backward Chaining Works
 
@@ -132,8 +120,6 @@ Key properties:
 - **Traced output** — every attempted rule and sub-goal is printed with indentation showing the reasoning tree.
 - **Cycle detection** — a `visited` set prevents infinite loops.
 - Returns `PROVED` or `NOT PROVED` with a full explanation trace.
-
----
 
 ## 6. How to Run
 
@@ -166,8 +152,6 @@ Enter GPA: 3.5
 Enter a course to query eligibility for: Data Structures
 ```
 
----
-
 ## 7. Sample Outputs
 
 ### Alice — GPA 3.2 | Completed: Programming I, Statistics, Mathematics I, Computer Organization
@@ -186,24 +170,23 @@ Rule 5 fired : Algorithms + GPA ≥ 3.0 → Advanced AI
   → New fact inferred : Eligible for Advanced AI
 
 Final Eligible Courses:
-  ✔  Eligible for Advanced AI
-  ✔  Eligible for Algorithms
-  ✔  Eligible for Data Structures
-  ✔  Eligible for Deep Learning
-  ✔  Eligible for Machine Learning Basics
+   Eligible for Advanced AI
+   Eligible for Algorithms
+   Eligible for Data Structures
+   Eligible for Deep Learning
+   Eligible for Machine Learning Basics
 ```
 
 **Backward Chaining — "Is Alice eligible for Machine Learning Basics?":**
 ```
-? Trying Rule 3 : Programming I + Statistics → Machine Learning Basics
-  Sub-goal: prove 'Programming I'  →  ✔ already known.
-  Sub-goal: prove 'Statistics'     →  ✔ already known.
-✔ Rule 3 PROVED 'Eligible for Machine Learning Basics'.
+Trying Rule 3 : Programming I + Statistics → Machine Learning Basics
+  Sub-goal: prove 'Programming I'  -> already known.
+  Sub-goal: prove 'Statistics'     -> already known.
+Rule 3 PROVED 'Eligible for Machine Learning Basics'.
 
 RESULT : PROVED – Alice IS eligible for Machine Learning Basics.
 ```
 
----
 
 ### Bob — GPA 2.1 | Completed: Programming I, Mathematics I, Computer Organization, Database Systems
 
@@ -214,19 +197,18 @@ Rule 4 fired → Not eligible for advanced courses  (GPA < 2.5)
 Rule 2 fired → Eligible for Algorithms
 Rule 6 fired → Eligible for Software Engineering
 
-⚠  Low GPA flag active – advanced courses blocked.
+Low GPA flag active – advanced courses blocked.
 ```
 
 **Backward Chaining — "Is Bob eligible for Advanced AI?":**
 ```
-? Trying Rule 5 …
+Trying Rule 5 …
   [sub-goals proved, but numeric GPA check fails]
-✘ Rule 5 failed.
+Rule 5 failed.
 
 RESULT : NOT PROVED – Bob is NOT eligible for Advanced AI.
 ```
 
----
 
 ## 8. File Structure
 
