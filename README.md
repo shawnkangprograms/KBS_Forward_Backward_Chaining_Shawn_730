@@ -218,7 +218,5 @@ KBS_Forward_Backward_Chaining_[LastName]_[ID]/
 └── README.md         # This file
 ```
 
----
-
 *Written for the Knowledge-Based Systems practical assignment.
 All inference logic is implemented from scratch using only Python built-ins.*
