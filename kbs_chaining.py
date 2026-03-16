@@ -75,7 +75,7 @@ def forward_chain(student):
     eligible = sorted(f for f in facts if f.startswith("Eligible:"))
     print(f"\nFinal: {', '.join(eligible) or 'None'}")
     if "BLOCKED: Advanced Courses" in facts:
-        print("⚠  Low GPA — advanced courses blocked.")
+        print("  Low GPA — advanced courses blocked.")
     print("=" * 55)
     return facts
 
@@ -87,7 +87,7 @@ def backward_chain(goal, student, facts, depth=0, visited=None):
     pad = "  " * depth
 
     if goal in facts:
-        print(f"{pad}✔ '{goal}' already known.")
+        print(f"{pad} '{goal}' already known.")
         return True
     if goal in visited:
         return False
@@ -102,10 +102,10 @@ def backward_chain(goal, student, facts, depth=0, visited=None):
         )
         gpa_ok = rule["gpa_check"](student.gpa) if "gpa_check" in rule else True
         if ok and gpa_ok:
-            print(f"{pad}✔ PROVED '{goal}'")
+            print(f"{pad} PROVED '{goal}'")
             return True
 
-    print(f"{pad}✘ Cannot prove '{goal}'")
+    print(f"{pad} Cannot prove '{goal}'")
     return False
 
 def query(goal, student, facts):
