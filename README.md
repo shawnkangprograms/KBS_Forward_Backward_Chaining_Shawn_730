@@ -1,4 +1,4 @@
-# KBS_Forward_Backward_Chaining_[LastName]_[Last3DigitsOfID]
+# KBS_Forward_Backward_Chaining_Njoroge_730
 
 > **Course Eligibility Expert System** — Demonstrating Forward and Backward Chaining
 > in a Rule-Based Knowledge-Based System (KBS) built entirely in Python.
